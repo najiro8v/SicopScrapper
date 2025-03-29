@@ -179,5 +179,5 @@ cython_debug/
 
 # folders/
 
-htmlScrapper/*
-txtData/*
+SicopApi/htmlScrapper/*
+SicopApi/txtData/*
