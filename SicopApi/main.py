@@ -1,4 +1,2 @@
 from config import config
-result = config.database.find()
-for x in result:
-    print(x)
+from app.services.scrapper import scrapper_service
