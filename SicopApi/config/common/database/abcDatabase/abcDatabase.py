@@ -8,4 +8,15 @@ class DataBaseConnection(ABC):
     def find(self,filter):
         pass
 
+    @abstractmethod
+    def find(self,filter):
+        pass
+    
+    @abstractmethod
+    def insertMany(self,data):
+        pass
+    
+    @abstractmethod
+    def set_table(self,table:str):
+        pass
    

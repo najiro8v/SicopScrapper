@@ -1,13 +1,4 @@
-from config.common.database.abcDatabase.abcDatabase import DataBaseConnection
+from .db_config import DataBase 
 from .mongo import DB
-from pymongo import CursorType
-
-class DataBase(DataBaseConnection):
-    
-    def find(self,filter=""):
-        result:CursorType = self.db.find()
-        return result
-
-collection=DB.get_collection("licitaciones")
-dataBase = DataBase(collection)
+dataBase = DataBase(DB)
 
