@@ -3,10 +3,10 @@ import re
 from datetime import datetime
 from bs4 import BeautifulSoup
 from .scrapper_config import header,MainURL,getUrlPage
-from models.licitaciones import licitacion
+from app.models.tenders import tender
 from app.services.request.request_service import Axios
 
-Licitations=[]
+Tenders=[]
 def getJustNumber(text:str):
     try:
         number = "".join(re.findall(r'\d', text))
@@ -40,7 +40,7 @@ def getRowSicopFormat(td:BeautifulSoup):
     openingDate = getDate(td[3])
     #status
     statusLicit = td[4].text
-    newLicit= licitacion.Licitacion(numberLicit,nameLicit,DescripLicit,in_charge,publishDate,openingDate,statusLicit)
+    newLicit= tender.Tender(numberLicit,nameLicit,DescripLicit,in_charge,publishDate,openingDate,statusLicit)
     return newLicit
 
 def getScrapperSicop(page : int = 0):
@@ -71,7 +71,7 @@ def getScrapperSicop(page : int = 0):
                 if len(td) > 0:
                     licit= getRowSicopFormat(td)
                     if licit is not None:
-                        Licitations.append(licit)
+                        Tenders.append(licit)
     print("Actual Row :", ActualPage , "  - To: ",EndPage)
     
     if(ActualPage == EndPage):

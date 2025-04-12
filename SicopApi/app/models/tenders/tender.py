@@ -1,5 +1,5 @@
 from datetime import datetime
-class Licitacion():
+class Tender():
     number:str
     name:str
     descrip:str
@@ -16,3 +16,14 @@ class Licitacion():
         self.publishDate = publishDate
         self.openingDate = openingDate
         self.status = status
+
+    def to_dict(self):
+        return {
+        "number" :  self.number
+        , "name" :  self.name
+        , "descrip" :  self.descrip
+        , "in_charge" :  self.in_charge
+        , "publishDate" :  self.publishDate
+        , "openingDate" :  self.openingDate
+        , "status" :  self.status
+        }

@@ -21,6 +21,8 @@ class Cleaner():
         self.dataBase.set_table(table)
         data = self.dataBase.find(filter=filter)
         return data
+    
+    
 
     
         

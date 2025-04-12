@@ -1,10 +1,10 @@
-from config.common.database.abcDatabase.abcDatabase import DataBaseConnection
+from Sicop.db.common.database.abcDatabase.abcDatabase import DataBaseConnection
 from pymongo import CursorType
 class DataBase(DataBaseConnection):
     
-    def __init__(self,cursor,collection:str="Tender"):
+    def __init__(self,cursor):
        self.cursor= cursor
-       self.db = cursor.get_collection(collection)
+       #self.db = cursor.get_collection(collection)
 
     def find(self,filter={}):
         result:CursorType = self.db.find(filter)
@@ -15,6 +15,9 @@ class DataBase(DataBaseConnection):
         result:CursorType = self.db.insert_many(new_data)
         return result
     
+    def set_table(self,collection:str):
+        self.db=self.cursor.get_collection(collection)
+
     def __format_data(self,data):
         return data.to_dict()
     
@@ -22,7 +25,4 @@ class DataBase(DataBaseConnection):
         array_format=[]
         for x in data:
             array_format.append(self.__format_data(x))    
-        return array_format
-    
-    def set_table(self,collection:str):
-        self.db=self.cursor.get_collection(collection)
+        return array_format   
